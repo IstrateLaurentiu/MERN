@@ -5,8 +5,9 @@ import { register } from "../../redux/actions/auth";
 
 // import axios from "axios";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +28,10 @@ const Register = ({ setAlert, register }) => {
       register({ name, email, password });
     }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashbord" />;
+  }
   return (
     <Fragment>
       <h1 className="large text-primary">Sign Up</h1>
@@ -92,5 +97,9 @@ const Register = ({ setAlert, register }) => {
 Register.propType = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { setAlert, register })(Register);

@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from "react";
 // import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../redux/actions/auth";
 
-function Login(props) {
+function Login({ login, isAuthenticated }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,9 +18,12 @@ function Login(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    login(email, password);
   };
 
+  if (isAuthenticated) {
+    return <Redirect to="/dashbord" />;
+  }
   return (
     <Fragment>
       <h1 className="large text-primary">Sign in</h1>
@@ -59,5 +65,12 @@ function Login(props) {
     </Fragment>
   );
 }
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { login })(Login);
