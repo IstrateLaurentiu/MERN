@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { SET_ALERT, REMOVE_ALERT } from "../actions/types";
+import { CLEAR_PROFILE, GET_PROFILE, PROFILE_ERROR } from "../actions/types";
 
 const initialState = {
   profile: null,
@@ -12,10 +12,12 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case SET_ALERT:
-      return [...state, payload];
-    case REMOVE_ALERT:
-      return state.filter((alert) => alert.id !== payload);
+    case GET_PROFILE:
+      return { ...state, profile: payload, loading: false };
+    case PROFILE_ERROR:
+      return { ...state, error: payload, loading: false };
+    case CLEAR_PROFILE:
+      return { ...state, profile: null, repos: [], loading: false };
     default:
       return state;
   }
