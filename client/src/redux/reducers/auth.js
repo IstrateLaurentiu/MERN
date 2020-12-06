@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
   AUTH_ERROR,
+  DELETE_ACCOUNT,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
@@ -57,6 +58,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case LOGOUT:
+    case DELETE_ACCOUNT:
       localStorage.removeItem("token");
       return {
         ...state,
@@ -64,6 +66,7 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
       };
+
     default:
       return state;
   }
