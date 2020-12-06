@@ -30,7 +30,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashbord" />;
+    return <Redirect to="/dashboard" />;
   }
   return (
     <Fragment>

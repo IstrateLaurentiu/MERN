@@ -4,6 +4,7 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  GITHUB_ERROR,
   PROFILE_ERROR,
   UPDATE_PROFILE,
 } from "../actions/types";
@@ -24,6 +25,8 @@ export default function (state = initialState, action) {
       return { ...state, profile: payload, loading: false };
     case PROFILE_ERROR:
       return { ...state, error: payload, loading: false, profile: null };
+    case GITHUB_ERROR:
+      return { ...state, error: payload, loading: false, repos: [] };
     case CLEAR_PROFILE:
       return { ...state, profile: null, repos: [], loading: false };
     case GET_PROFILES:

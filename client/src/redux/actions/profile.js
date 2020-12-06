@@ -5,6 +5,7 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  GITHUB_ERROR,
   PROFILE_ERROR,
   UPDATE_PROFILE,
 } from "./types";
@@ -66,7 +67,7 @@ export const getGithubRepos = (username) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: GITHUB_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
