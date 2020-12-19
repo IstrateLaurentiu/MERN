@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://laurentiu:laurentiu@mern.qvlsq.mongodb.net/<MERN>?retryWrites=true&w=majority",
+    "jwtSecret": "HolyPaladin",
+    "githubClientId": "09313175cdee3c77ad66",
+    "githubClientSecret": "aaf8299c9e396e3897b4b8cb59315750c75fd1ca"
+}
