@@ -5,6 +5,7 @@ const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
+const sendGrid =  require('../../mailAPI/mail');
 
 const User = require("../../models/User");
 router.post(
@@ -43,6 +44,7 @@ router.post(
         email,
         avatar,
         password,
+        isconfirmed: false
       });
 
       const salt = await bycrypt.genSalt(10);
@@ -61,13 +63,57 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.send({ token });
+          const msg = {
+  to: email, // Change to your recipient
+  from: 'laur.constantin22@gmail.com', // Change to your verified sender
+  subject: 'Activate you account',
+  text: 'Thank you for choosing our services! Please confirm your account!',
+  html: `<strong>Thank you for choosing our services! <a href='https://secret-gorge-29804.herokuapp.com/activate/${token}' target='_blank'>Please confirm your account!</a> </strong>`,
+}
+
+sendGrid
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+    res.send({ token });
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+          
         }
       );
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
     }
+  }
+);
+
+
+router.post(
+  "/activate/:userId",
+  async (req, res) => {
+    
+    const userId = req.params.userId;
+
+    
+      let user = await User.findOne({ _id: userId });
+      if (!user) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "User not found" }] });
+      }
+
+      
+
+      user.update({
+        isconfirmed: true
+      }).then(() => {
+        res.send({ msg: 'User successfully confirmed' });
+      })
+
+    
   }
 );
 
