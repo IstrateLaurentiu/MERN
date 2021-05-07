@@ -62,6 +62,12 @@ const options = {
       headers: { "user-agent": "node.js" },
     };
 
+##   Capturi ecran aplicație
 
-# Referinte
+<img src="./cloud-computin-screenshots/ss1.PNG" />
+<img src="./cloud-computin-screenshots/ss2.png" />
+<img src="./cloud-computin-screenshots/ss3.png" />
+
+
+## Referinte
 https://www.udemy.com/course/mern-stack-front-to-back/
