@@ -64,9 +64,9 @@ const options = {
 
 ##   Capturi ecran aplicație
 
-<img src="cloud-computin-screenshots/ss1.PNG" />
-<img src="cloud-computin-screenshots/ss2.png" />
-<img src="cloud-computin-screenshots/ss3.png" />
+<img src="cloud-computing-screenshots/ss1.PNG" />
+<img src="cloud-computing-screenshots/ss2.png" />
+<img src="cloud-computing-screenshots/ss3.png" />
 
 
 ## Referinte
