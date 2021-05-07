@@ -21,6 +21,7 @@ import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import Activate from "./components/auth/Activate";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -42,7 +43,7 @@ function App() {
               <Route exact path="/login" component={Login}></Route>
               <Route exact path="/profiles" component={Profiles}></Route>
               <Route exact path="/profile/:id" component={Profile}></Route>
-
+              <Route exact path="/activate/:token" component={Activate}></Route>
               <PrivateRoute
                 exact
                 path="/dashboard"

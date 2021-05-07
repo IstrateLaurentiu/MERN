@@ -43,6 +43,10 @@ router.post(
         return res.status(400).json({ errors: [{ msg: "Invalid password" }] });
       }
 
+      if(!user.isconfirmed) {
+        return res.status(400).json({ errors: [{ msg: "Unconfirmed user" }] });
+      }
+
       const payload = {
         user: {
           id: user.id,

@@ -49,7 +49,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
-    dispatch(loadUser());
+    dispatch(setAlert('Registration was successful! You need to confirm your email address in order to login.', "success"));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

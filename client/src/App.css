@@ -583,3 +583,16 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+
+.activation-success {
+  background: green;
+  padding: 48px;
+  text-align: center;
+}
+
+.activation-fail {
+  background: red;
+  padding: 48px;
+  text-align: center;
+}

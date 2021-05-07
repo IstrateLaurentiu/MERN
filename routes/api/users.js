@@ -8,6 +8,7 @@ const config = require("config");
 const sendGrid =  require('../../mailAPI/mail');
 
 const User = require("../../models/User");
+
 router.post(
   "/",
   [
@@ -91,29 +92,24 @@ sendGrid
 );
 
 
-router.post(
-  "/activate/:userId",
+router.put(
+  "/activate/:token",
   async (req, res) => {
     
-    const userId = req.params.userId;
+    const token = req.params.token;
 
-    
-      let user = await User.findOne({ _id: userId });
-      if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User not found" }] });
+    jwt.verify(token, config.get("jwtSecret") , async function  (err, decoded) {
+      if (err) {
+          
+          return res.json({msg: 'token is wrong or expired'});
       }
-
+      else {
+            let user = await User.findOne({ _id: decoded.user.id });
+            if(user.isconfirmed) return res.json({msg: 'Your account is already confirmed!', success: false});
+            user.update({isconfirmed: true}).then(result => res.status(200).json({msg: 'You have activated your account! You can login!', success: true}));
       
-
-      user.update({
-        isconfirmed: true
-      }).then(() => {
-        res.send({ msg: 'User successfully confirmed' });
-      })
-
-    
+      } 
+  })  
   }
 );
 

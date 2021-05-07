@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
       };
     case REGISTER_SUCCESS:
       localStorage.setItem("token", payload.token);
-      return { ...state, ...payload, isAuthenticated: true, loading: false };
+      return { ...state, ...payload, isAuthenticated: false, loading: false };
     case REGISTER_FAIL:
       localStorage.removeItem("token");
       return {
