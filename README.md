@@ -4,6 +4,8 @@ Aplicatia denumita DevConnector este o aplicatie contruita folosind React si Nod
 
 Cele 2 api-uri integrate sunt unul de la github, prin intermediul caruia un utilizator isi adauga, daca doreste, numele de utilizator de github si in aplicatie, in cadrul profilului, i se vor afisa toate repository-urile publice. Cel de-al doilea api integrat este  SendGrid, un serviciu pentru trimitere de email-uri.
 
+Link-ul aplicatiei: https://secret-gorge-29804.herokuapp.com/
+
 # Descriere problemă
 
 In cadrul aplcatiei, persoanele, in special programatorii, isi pot crea cont si pot crea diverse postari, pot comenta si da like altor postari si pot urmari alte persoane. Fiecare utilizator logat isi poate crea un profil unde adauga ce informatii doreste despre el si despre experienta profesionala si cea educationala.
