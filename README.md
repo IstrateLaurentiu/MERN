@@ -10,7 +10,7 @@ In cadrul aplcatiei, persoanele, in special programatorii, isi pot crea cont si 
 
 # Descriere API
 
-Arhitectura aplicatiei este REST API. Prin intermediul router-ului din Express am creat mai multe endpoint-uri unde gestionez fiecare tip de request in parte (get, post, put si delete). Pentru legatura dintre client si server, am folosit pachetul axios prin intermediul caruia apelez endpoint-urile create. API-ul de la github este folosit in momentul in care se efectueaza un request  de get pentru un singur user, iar API-ul de la SendGrid este folosit in momentul in care este inregistrat un utilizator. Pentru logare am folosit JSON Web Token.
+Arhitectura aplicatiei este REST API. Prin intermediul router-ului din Express am creat mai multe endpoint-uri unde gestionez fiecare tip de request in parte (get, post, put si delete). Pentru legatura dintre client si server, am folosit pachetul axios prin intermediul caruia apelez endpoint-urile create. API-ul de la github este folosit in momentul in care se efectueaza un request  de tip GET pentru profilul unui singur user si pentru a apela endpoint-ul respectiv este nevoie de un "client secret" si de un "client Id", iar API-ul de la SendGrid este folosit in momentul in care este inregistrat un utilizator. Pentru a folosit sendgrid, am instalat pachetul npm aferent si am folosit API-key-ul generat la ei pe site. Pentru functionalitatea de logare in aplicatie am folosit JSON Web Token.
 
 # Flux de date
 ## Exemple de request / response
