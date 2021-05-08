@@ -38,9 +38,10 @@ Dupa ce este efectuat request-ul din partea de frontend, pe backend va fi apelat
 ## Metode HTTP
 
 Metodele HTTP folosite sunt GET, POST, PUT si DELETE. 
-Get este folosit pentru a prelua informatii din baza de date ( informatii despre un profil sau despre toate profilele)
+Get este folosit pentru a prelua informatii din baza de date ( informatii despre un profil sau despre toate profilurile)
 Post este folosit ca sa trimit date catre server, spre exemplu endpoint-urile pentru login si register
 Put este folosit pentru update ( activarea email-ului)
+Delete este folosit pentru a sterge inregistrari din baza de date.
 
 ## Autentificare și autorizare servicii utilizate
 Pentru cele 2 API-uri utilizate am fost nevoit sa obtin de pe platformele lor anumite "API-KEYS" si alte credentiale, pentru autentificare.
